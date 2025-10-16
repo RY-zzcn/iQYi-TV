@@ -111,7 +111,7 @@ export const UserMenu: React.FC = () => {
     useState(false);
   // 跳过片头片尾相关设置
   const [enableAutoSkip, setEnableAutoSkip] = useState(false);
-  const [enableAutoNextEpisode, setEnableAutoNextEpisode] = useState(false);
+  const [enableAutoNextEpisode, setEnableAutoNextEpisode] = useState(true);
 
   // 豆瓣数据源选项
   const doubanDataSourceOptions = [
