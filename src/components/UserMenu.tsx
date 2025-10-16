@@ -246,7 +246,7 @@ export const UserMenu: React.FC = () => {
         setEnableContinueWatchingFilter(JSON.parse(savedEnableContinueWatchingFilter));
       }
 
-      // 读取跳过片头片尾设置（默认开启）
+      // 读取跳过片头片尾设置（默认关闭）
       const savedEnableAutoSkip = localStorage.getItem('enableAutoSkip');
       if (savedEnableAutoSkip !== null) {
         setEnableAutoSkip(JSON.parse(savedEnableAutoSkip));
@@ -831,7 +831,7 @@ export const UserMenu: React.FC = () => {
       (window as any).RUNTIME_CONFIG?.FLUID_SEARCH !== false;
 
     setDefaultAggregateSearch(true);
-    setEnableOptimization(false);
+    setEnableOptimization(true);
     setFluidSearch(defaultFluidSearch);
     setLiveDirectConnect(false);
     setDoubanProxyUrl(defaultDoubanProxy);
@@ -841,8 +841,8 @@ export const UserMenu: React.FC = () => {
     setContinueWatchingMinProgress(5);
     setContinueWatchingMaxProgress(100);
     setEnableContinueWatchingFilter(false);
-    setEnableAutoSkip(true);
-    setEnableAutoNextEpisode(true);
+    setEnableAutoSkip(false);
+    setEnableAutoNextEpisode(false);
 
     if (typeof window !== 'undefined') {
       localStorage.setItem('defaultAggregateSearch', JSON.stringify(true));
