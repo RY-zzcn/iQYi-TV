@@ -3705,14 +3705,21 @@ function PlayPageClient() {
           return;
         }
 
+        // 🔑 【新增】检查用户是否开启了"片尾自动播放下一集"功能
+        const enableAutoNextEpisode = localStorage.getItem('enableAutoNextEpisode');
+        const userAutoNextEpisode = enableAutoNextEpisode !== null ? JSON.parse(enableAutoNextEpisode) : true;
+
         const d = detailRef.current;
         if (d && d.episodes && idx < d.episodes.length - 1) {
           videoEndedHandledRef.current = true;
+        // 🔑 【修改】只有在用户开启了自动播放下一集时才执行
+        if (userAutoNextEpisode) {
           setTimeout(() => {
             setCurrentEpisodeIndex(idx + 1);
           }, 1000);
         }
-      });
+      }
+    });
 
       // 合并的timeupdate监听器 - 处理跳过片头片尾和保存进度
       artPlayerRef.current.on('video:timeupdate', () => {
