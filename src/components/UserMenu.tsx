@@ -111,7 +111,7 @@ export const UserMenu: React.FC = () => {
     useState(false);
   // 跳过片头片尾相关设置
   const [enableAutoSkip, setEnableAutoSkip] = useState(false);
-  const [enableAutoNextEpisode, setEnableAutoNextEpisode] = useState(false);
+  const [enableAutoNextEpisode, setEnableAutoNextEpisode] = useState(true);
 
   // 豆瓣数据源选项
   const doubanDataSourceOptions = [
@@ -842,11 +842,11 @@ export const UserMenu: React.FC = () => {
     setContinueWatchingMaxProgress(100);
     setEnableContinueWatchingFilter(false);
     setEnableAutoSkip(false);
-    setEnableAutoNextEpisode(false);
+    setEnableAutoNextEpisode(true);
 
     if (typeof window !== 'undefined') {
       localStorage.setItem('defaultAggregateSearch', JSON.stringify(true));
-      localStorage.setItem('enableOptimization', JSON.stringify(false));
+      localStorage.setItem('enableOptimization', JSON.stringify(true));
       localStorage.setItem('fluidSearch', JSON.stringify(defaultFluidSearch));
       localStorage.setItem('liveDirectConnect', JSON.stringify(false));
       localStorage.setItem('doubanProxyUrl', defaultDoubanProxy);
@@ -856,7 +856,7 @@ export const UserMenu: React.FC = () => {
       localStorage.setItem('continueWatchingMinProgress', '5');
       localStorage.setItem('continueWatchingMaxProgress', '100');
       localStorage.setItem('enableContinueWatchingFilter', JSON.stringify(false));
-      localStorage.setItem('enableAutoSkip', JSON.stringify(true));
+      localStorage.setItem('enableAutoSkip', JSON.stringify(false));
       localStorage.setItem('enableAutoNextEpisode', JSON.stringify(true));
     }
   };
