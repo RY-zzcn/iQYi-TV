@@ -441,7 +441,7 @@ export default function SkipController({
         setCurrentSkipSegment(currentSegment);
 
         // 检查当前片段是否开启自动跳过（默认为true）
-        const shouldAutoSkip = currentSegment.autoSkip !== false;
+        const shouldAutoSkip = currentSegment.autoSkip === true;
         console.log(`🔧 [SkipController] shouldAutoSkip=${shouldAutoSkip}, currentSegment.autoSkip=${currentSegment.autoSkip}`);
 
         if (shouldAutoSkip) {
@@ -547,7 +547,7 @@ export default function SkipController({
         end: newSegment.end,
         type: newSegment.type as 'opening' | 'ending',
         title: newSegment.title || (newSegment.type === 'opening' ? '片头' : '片尾'),
-        autoSkip: true, // 默认开启自动跳过
+        autoSkip: batchSettings.autoSkip, // 默认开启自动跳过
         autoNextEpisode: newSegment.type === 'ending', // 片尾默认开启自动下一集
       };
 
@@ -729,8 +729,8 @@ export default function SkipController({
   useEffect(() => {
     const savedEnableAutoSkip = localStorage.getItem('enableAutoSkip');
     const savedEnableAutoNextEpisode = localStorage.getItem('enableAutoNextEpisode');
-    const userAutoSkip = savedEnableAutoSkip !== null ? JSON.parse(savedEnableAutoSkip) : true;
-    const userAutoNextEpisode = savedEnableAutoNextEpisode !== null ? JSON.parse(savedEnableAutoNextEpisode) : true;
+    const userAutoSkip = savedEnableAutoSkip !== null ? JSON.parse(savedEnableAutoSkip) : false;
+    const userAutoNextEpisode = savedEnableAutoNextEpisode !== null ? JSON.parse(savedEnableAutoNextEpisode) : false;
 
     console.log(`📖 [SkipController] 读取用户设置: autoSkip=${userAutoSkip}, autoNextEpisode=${userAutoNextEpisode}`);
 
@@ -817,8 +817,8 @@ export default function SkipController({
     // 取消时从 localStorage 读取用户设置，不能硬编码默认值
     const savedEnableAutoSkip = localStorage.getItem('enableAutoSkip');
     const savedEnableAutoNextEpisode = localStorage.getItem('enableAutoNextEpisode');
-    const userAutoSkip = savedEnableAutoSkip !== null ? JSON.parse(savedEnableAutoSkip) : true;
-    const userAutoNextEpisode = savedEnableAutoNextEpisode !== null ? JSON.parse(savedEnableAutoNextEpisode) : true;
+    const userAutoSkip = savedEnableAutoSkip !== null ? JSON.parse(savedEnableAutoSkip) : false;
+    const userAutoNextEpisode = savedEnableAutoNextEpisode !== null ? JSON.parse(savedEnableAutoNextEpisode) : false;
 
     setBatchSettings({
       openingStart: '0:00',
