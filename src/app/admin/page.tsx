@@ -2710,14 +2710,16 @@ const VideoSourceConfig = ({
       showAlert({
         type: 'success',
         title: '操作成功',
-        message: `${markAsAdult ? '标记' : '取消标记'}成功！共处理 ${keys.length} 个视频源`
+        message: `${markAsAdult ? '标记' : '取消标记'}成功！共处理 ${keys.length} 个视频源`,
+        timer: 2000
       });
       setSelectedSources(new Set());
     } catch {
       showAlert({
         type: 'error',
         title: '操作失败',
-        message: `${markAsAdult ? '标记' : '取消标记'}失败，请重试`
+        message: `${markAsAdult ? '标记' : '取消标记'}失败，请重试`,
+        showConfirm: true
       });
     }
   };
@@ -5825,7 +5827,7 @@ function AdminPageClient() {
   if (loading) {
     return (
       <PageLayout activePath='/admin'>
-        <div className='px-2 sm:px-10 py-4 sm:py-8'>
+        <div className='-mt-6 md:mt-0'>
           <div className='max-w-[95%] mx-auto'>
             <h1 className='text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8'>
               管理员设置
@@ -5853,7 +5855,7 @@ function AdminPageClient() {
 
   return (
     <PageLayout activePath='/admin'>
-      <div className='px-2 sm:px-10 py-4 sm:py-8'>
+      <div className='-mt-6 md:mt-0'>
         <div className='max-w-[95%] mx-auto'>
           {/* 标题 + 重置配置按钮 */}
           <div className='flex items-center gap-2 mb-8'>
